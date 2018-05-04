@@ -1,0 +1,6 @@
+ASNACN_DIR: dataview/
+INSTALLED_TYPES_DIR: installed_types/
+PROJECT_NAME: tutorial-camcapture
+deps:
+- types/base: ''
+- external/static_opencv: ''
