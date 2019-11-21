@@ -40,6 +40,6 @@ esrocos_init()
 esrocos_export_function("camera_capture" "tutorial/cam_capture")
 
 #uncomment to export PKG-CONFIG-file
-esrocos_export_pkg-config_info( VERSION 1.0
-                                REQUIRES opencv
-                              ) 
+esrocos_export_pkgconfig( VERSION 1.0
+                          REQUIRES opencv
+                        ) 

@@ -14,19 +14,24 @@ void camera_capture_startup()
 void camera_capture_PI_capture()
 {
      VideoCapture cap(0); // open the default camera
-     if(!cap.isOpened())  // check if we succeeded
-       
-     namedWindow("raw",1);
-     namedWindow("edges",2);
-    
-     Mat frame;
-     Mat edges;
-     cap >> frame; // get a new frame from camera
-     cvtColor(frame, edges, COLOR_BGR2GRAY);
-     GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-     Canny(edges, edges, 0, 30, 3);
-     imshow("raw", frame);    
-     imshow("edges", edges);
-     if(waitKey(100) >= 0);
+     if(cap.isOpened())  // check if we succeeded
+     { 
+         namedWindow("raw",1);
+         namedWindow("edges",2);
+
+         Mat frame;
+         Mat edges;
+         cap >> frame; // get a new frame from camera
+
+         if(frame.size().width > 0 && frame.size().height > 0)
+         {
+            cvtColor(frame, edges, COLOR_BGR2GRAY);
+            GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
+            Canny(edges, edges, 0, 30, 3);
+             imshow("raw", frame);    
+             imshow("edges", edges);
+             if(waitKey(100) >= 0);
+         }
+     }
 }
 
